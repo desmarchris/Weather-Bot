@@ -61,9 +61,15 @@ exports.handle = (client) => {
       },
 
       prompt() {
-        // Need to provide weather
+        let weatherData = {
+          temperature: 60,
+          condition: 'sunny',
+          city: client.getConversationState().weatherCity.value,
+        }
+
+        client.addResponse('provide_weather/current', weatherData) // Init.ai takes message type and matches provided data
         client.done()
-      },
+      }
     })
     
     client.runFlow({
