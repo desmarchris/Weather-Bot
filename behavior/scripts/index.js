@@ -1,7 +1,6 @@
 'use strict'
 
 exports.handle = (client) => {
-  // Create steps
 
   const sayHello = client.createStep({
     satisfied() {
@@ -61,7 +60,7 @@ exports.handle = (client) => {
       },
 
       prompt() {
-        let weatherData = {
+        let weatherData = { // dummy data
           temperature: 60,
           condition: 'sunny',
           city: client.getConversationState().weatherCity.value,
@@ -73,12 +72,8 @@ exports.handle = (client) => {
     })
     
     client.runFlow({
-    classifications: {
-      // map inbound message classifications to names of streams
-    },
-    autoResponses: {
-      // configure responses to be automatically sent as predicted by the machine learning model
-    },
+    classifications: {},
+    autoResponses: {},
     streams: {
       main: 'getWeather',
       hi: [sayHello],
